@@ -3,11 +3,11 @@ package com.example.aisleassignment.view.user
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.aisleassignment.R
@@ -15,6 +15,7 @@ import com.example.aisleassignment.adapter.LikesAdapter
 import com.example.aisleassignment.databinding.FragmentNotesBinding
 import com.example.aisleassignment.model.notes.Profiles
 import com.example.aisleassignment.viewmodel.UserDataViewModel
+
 
 class NotesFragment : Fragment() {
 
@@ -39,6 +40,7 @@ class NotesFragment : Fragment() {
 
         initRecyclerView()
         initObserver()
+
         return dataBinding.root
     }
 

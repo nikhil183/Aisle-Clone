@@ -3,8 +3,7 @@ package com.example.aisleassignment.view.login
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.JsonToken
-import android.util.Log
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +21,8 @@ class OtpVerificationFragment : Fragment() {
 
     private lateinit var dataBinding: FragmentOtpVerificationBinding
     private lateinit var viewModel: LoginViewModel
+    private lateinit var countDownTimer: CountDownTimer
+    private var timeLeftInMillis: Long = 60000
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +33,7 @@ class OtpVerificationFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_otp_verification, container, false)
 
         initViewModel()
+        initTimer()
         dataBinding.viewModel = viewModel
         return dataBinding.root
     }
@@ -64,6 +66,7 @@ class OtpVerificationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        countDownTimer.start()
         dataBinding.btnContinue.setOnClickListener {
             onContinueButtonClick()
         }
@@ -71,6 +74,34 @@ class OtpVerificationFragment : Fragment() {
         dataBinding.ivEditPhoneNumber.setOnClickListener {
             findNavController().popBackStack()
         }
+
+        dataBinding.tvTimer.setOnClickListener {
+            Toast.makeText(
+                requireContext(),
+                "Otp sent again!",
+                Toast.LENGTH_SHORT
+            ).show()
+            countDownTimer.start()
+        }
+    }
+
+    private fun initTimer() {
+        countDownTimer = object : CountDownTimer(timeLeftInMillis, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                timeLeftInMillis = millisUntilFinished
+                updateCountdownText()
+            }
+
+            override fun onFinish() {
+                dataBinding.tvTimer.text = getString(R.string.resend_otp)
+            }
+        }
+    }
+    private fun updateCountdownText() {
+        val minutes = (timeLeftInMillis / 1000).toInt() / 60
+        val seconds = (timeLeftInMillis / 1000).toInt() % 60
+        val timeLeftFormatted = String.format("%02d:%02d", minutes, seconds)
+        dataBinding.tvTimer.text = timeLeftFormatted
     }
 
     private fun onContinueButtonClick() {
@@ -84,5 +115,10 @@ class OtpVerificationFragment : Fragment() {
                 Toast.LENGTH_SHORT
             ).show()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        countDownTimer.cancel()
     }
 }

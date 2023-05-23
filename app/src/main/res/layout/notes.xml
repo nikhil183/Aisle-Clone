@@ -32,6 +32,42 @@
             android:textColor="@color/white"
             android:textSize="22sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tvAllNotes"
+            app:layout_constraintStart_toStartOf="@id/sivNotesImage" />
+
+        <TextView
+            android:id="@+id/tvComma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/comma"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/tvName"
+            app:layout_constraintBottom_toBottomOf="@id/tvName"
+            app:layout_constraintTop_toTopOf="@id/tvName" />
+
+        <TextView
+            android:id="@+id/tvAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{profile.generalInformation.age.toString()}"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:layout_marginStart="5dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/tvComma"
+            app:layout_constraintBottom_toBottomOf="@id/tvComma"
+            app:layout_constraintTop_toTopOf="@id/tvComma" />
+
+        <TextView
+            android:id="@+id/tvAllNotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/view_all_notes"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:layout_marginStart="15dp"
             android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toBottomOf="@id/sivNotesImage"
             app:layout_constraintStart_toStartOf="@id/sivNotesImage" />

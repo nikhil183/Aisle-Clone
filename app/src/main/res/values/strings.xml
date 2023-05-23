@@ -19,4 +19,7 @@
     <string name="matches">Matches</string>
     <string name="discover">Discover</string>
     <string name="edit_phone_number">Edit phone number</string>
+    <string name="resend_otp">Resend Otp</string>
+    <string name="comma">,</string>
+    <string name="view_all_notes">Tap to review 50+ notes</string>
 </resources>

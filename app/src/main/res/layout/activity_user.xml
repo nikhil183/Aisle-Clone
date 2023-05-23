@@ -24,6 +24,9 @@
             android:layout_height="?actionBarSize"
             app:elevation="0dp"
             app:labelVisibilityMode="labeled"
+            android:theme="@style/SelectedBottomNavigationItemStyle"
+            app:itemIconTint="@drawable/bottom_navigation_color"
+            app:itemTextColor="@drawable/bottom_navigation_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/bottom_nav" />
