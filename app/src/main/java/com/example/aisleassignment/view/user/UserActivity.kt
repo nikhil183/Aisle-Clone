@@ -1,4 +1,4 @@
-package com.example.aisleassignment.view
+package com.example.aisleassignment.view.user
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

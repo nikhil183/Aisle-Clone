@@ -14,7 +14,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.aisleassignment.R
 import com.example.aisleassignment.databinding.FragmentOtpVerificationBinding
-import com.example.aisleassignment.view.UserActivity
+import com.example.aisleassignment.network.NetworkResult
+import com.example.aisleassignment.view.user.UserActivity
 import com.example.aisleassignment.viewmodel.LoginViewModel
 
 class OtpVerificationFragment : Fragment() {
@@ -41,20 +42,30 @@ class OtpVerificationFragment : Fragment() {
     private fun initViewModel() {
         viewModel = ViewModelProvider(requireActivity())[LoginViewModel::class.java]
 
-        viewModel.isOtpValid.observe(requireActivity()) {
-            if(it) {
-                storeAccessToken()
-                startUserActivity()
-            } else {
-                Toast.makeText(requireContext(), "Entered OTP is invalid",Toast.LENGTH_SHORT).show()
+        viewModel.accessToken.observe(requireActivity()) { accessToken ->
+            when (accessToken) {
+                is NetworkResult.Success -> {
+                    dataBinding.pbLoading.visibility = View.INVISIBLE
+                    storeAccessToken(accessToken.data!!)
+                    startUserActivity()
+                }
+                is NetworkResult.Loading -> {
+                    dataBinding.pbLoading.visibility = View.VISIBLE
+                }
+                is NetworkResult.Failure -> {
+                    dataBinding.pbLoading.visibility = View.INVISIBLE
+                    Toast.makeText(requireContext(), "Entered OTP is invalid", Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
         }
     }
 
-    private fun storeAccessToken() {
-        val sharedPref = requireActivity().getSharedPreferences("shared_preference",Context.MODE_PRIVATE)
+    private fun storeAccessToken(accessToken: String) {
+        val sharedPref =
+            requireActivity().getSharedPreferences("shared_preference", Context.MODE_PRIVATE)
         sharedPref.edit().run {
-            putString("accessToken", viewModel.accessToken)
+            putString("accessToken", accessToken)
             apply()
         }
     }
@@ -97,6 +108,7 @@ class OtpVerificationFragment : Fragment() {
             }
         }
     }
+
     private fun updateCountdownText() {
         val minutes = (timeLeftInMillis / 1000).toInt() / 60
         val seconds = (timeLeftInMillis / 1000).toInt() % 60

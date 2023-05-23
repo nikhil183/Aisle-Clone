@@ -1,4 +1,4 @@
-package com.example.aisleassignment.view
+package com.example.aisleassignment.view.login
 
 import android.os.Bundle
 import android.util.Log
