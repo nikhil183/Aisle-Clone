@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.login.OtpVerificationFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".view.login.LoginFragment">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineVertical10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineHorizontal30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.3" />
+
+            <TextView
+                android:id="@+id/tvPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+91 9999999999"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/tvEnterPhoneNumber"
+                app:layout_constraintStart_toEndOf="@id/guidelineVertical10" />
+
+            <ImageView
+                android:id="@+id/ivEditPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_baseline_edit_24"
+                app:layout_constraintBottom_toBottomOf="@id/tvPhoneNumber"
+                app:layout_constraintStart_toEndOf="@id/tvPhoneNumber"
+                app:layout_constraintTop_toTopOf="@id/tvPhoneNumber" />
+
+            <TextView
+                android:id="@+id/tvEnterPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_the_otp"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toTopOf="@id/guidelineHorizontal30"
+                app:layout_constraintStart_toEndOf="@id/guidelineVertical10" />
+
+            <EditText
+                android:id="@+id/etOtp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_otp_here"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@id/guidelineVertical10"
+                app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal30" />
+
+            <Button
+                android:id="@+id/btnContinue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_continue"
+                app:layout_constraintStart_toEndOf="@id/guidelineVertical10"
+                app:layout_constraintTop_toBottomOf="@id/etOtp" />
+
+            <TextView
+                android:id="@+id/tvTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/demo_timer"
+                app:layout_constraintBaseline_toBaselineOf="@+id/btnContinue"
+                app:layout_constraintStart_toEndOf="@id/btnContinue" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

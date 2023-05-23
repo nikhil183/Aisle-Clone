@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Aisle Assignment</string>
+    <string name="enter_your_phone_number">Enter Your\nPhone Number</string>
+    <string name="get_otp">Get OTP</string>
+    <string name="indian_country_code">+91</string>
+    <string name="hint_enter_phone_number">Enter Phone Number</string>
+    <string name="button_continue">Continue</string>
+    <string name="enter_the_otp">Enter The \nOTP</string>
+    <string name="enter_otp_here">Enter OTP here</string>
+    <string name="demo_timer">00:59</string>
 </resources>
