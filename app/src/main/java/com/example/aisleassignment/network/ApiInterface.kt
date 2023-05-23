@@ -20,5 +20,5 @@ interface ApiInterface {
     ): Response<OtpVerificationResponse>
 
     @GET("/V1/users/test_profile_list")
-    suspend fun getProfileList(@Header("Authorization") token: String): Response<Notes>
+    suspend fun getNotes(@Header("Authorization") token: String): Response<Notes>
 }

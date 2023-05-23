@@ -1,6 +1,10 @@
 package com.example.aisleassignment.view.login
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.JsonToken
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.aisleassignment.R
 import com.example.aisleassignment.databinding.FragmentOtpVerificationBinding
+import com.example.aisleassignment.view.UserActivity
 import com.example.aisleassignment.viewmodel.LoginViewModel
 
 class OtpVerificationFragment : Fragment() {
@@ -26,36 +31,58 @@ class OtpVerificationFragment : Fragment() {
         dataBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_otp_verification, container, false)
 
-        viewModel = ViewModelProvider(requireActivity())[LoginViewModel::class.java]
+        initViewModel()
         dataBinding.viewModel = viewModel
+        return dataBinding.root
+    }
+
+    private fun initViewModel() {
+        viewModel = ViewModelProvider(requireActivity())[LoginViewModel::class.java]
+
         viewModel.isOtpValid.observe(requireActivity()) {
             if(it) {
-                //Todo: start next activity
+                storeAccessToken()
+                startUserActivity()
             } else {
                 Toast.makeText(requireContext(), "Entered OTP is invalid",Toast.LENGTH_SHORT).show()
             }
         }
+    }
 
-        return dataBinding.root
+    private fun storeAccessToken() {
+        val sharedPref = requireActivity().getSharedPreferences("shared_preference",Context.MODE_PRIVATE)
+        sharedPref.edit().run {
+            putString("accessToken", viewModel.accessToken)
+            apply()
+        }
+    }
+
+    private fun startUserActivity() {
+        startActivity(Intent(activity, UserActivity::class.java))
+        activity?.finish()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dataBinding.btnContinue.setOnClickListener {
-            val otp = dataBinding.etOtp.text.toString()
-            if (viewModel.isOtpFormatValid(otp)) {
-                viewModel.verifyOtp()
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Otp should have 4 digits",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+            onContinueButtonClick()
         }
 
         dataBinding.ivEditPhoneNumber.setOnClickListener {
             findNavController().popBackStack()
+        }
+    }
+
+    private fun onContinueButtonClick() {
+        val otp = dataBinding.etOtp.text.toString()
+        if (viewModel.isOtpFormatValid(otp)) {
+            viewModel.verifyOtp()
+        } else {
+            Toast.makeText(
+                requireContext(),
+                "Otp should have 4 digits",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }

@@ -8,4 +8,11 @@
     <string name="enter_the_otp">Enter The \nOTP</string>
     <string name="enter_otp_here">Enter OTP here</string>
     <string name="demo_timer">00:59</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="notes">Notes</string>
+    <string name="personal_messages_to_you">Personal messages to you</string>
+    <string name="interested_in_you">Interested In You</string>
+    <string name="premium_description">Premium members can \nview all their likes at once</string>
+    <string name="upgrade">Upgrade</string>
 </resources>

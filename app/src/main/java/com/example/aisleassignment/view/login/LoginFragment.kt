@@ -20,6 +20,10 @@ class LoginFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initViewModel()
+    }
+
+    private fun initViewModel() {
         viewModel = ViewModelProvider(requireActivity())[LoginViewModel::class.java]
         viewModel.isNumberRegistered.observe(this) {
             if (it) {
@@ -43,18 +47,22 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dataBinding.btnContinue.setOnClickListener {
-            val phoneNumber = dataBinding.etPhoneNumber.text.toString()
-            val countryCode = dataBinding.tvCountryCode.text.toString()
+            onContinueButtonClick()
+        }
+    }
 
-            if(viewModel.isValidPhoneNumber(countryCode,phoneNumber)) {
-                viewModel.loginWithPhoneNumber()
-            } else{
-                Toast.makeText(
-                    requireContext(),
-                    "Phone Number should have 10 digits",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+    private fun onContinueButtonClick() {
+        val phoneNumber = dataBinding.etPhoneNumber.text.toString()
+        val countryCode = dataBinding.tvCountryCode.text.toString()
+
+        if(viewModel.isValidPhoneNumber(countryCode,phoneNumber)) {
+            viewModel.loginWithPhoneNumber()
+        } else{
+            Toast.makeText(
+                requireContext(),
+                "Phone Number should have 10 digits",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }

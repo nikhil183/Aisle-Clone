@@ -58,18 +58,9 @@ class LoginViewModel : ViewModel() {
             if (result.isSuccessful) {
                 _isOtpValid.postValue(true)
                 accessToken = result.body()?.token.toString()
+            } else {
+                _isOtpValid.postValue(false)
             }
         }
     }
-
-    fun getNotes(accessToken: String) {
-        viewModelScope.launch(Dispatchers.IO) {
-            val result =
-                ApiService.retrofitBuilder.getProfileList("Bearer $accessToken")
-            if (result.isSuccessful) {
-                Log.i( "photo", result.body()?.invites?.profiles?.get(0)?.photos?.get(0)?.photo.toString())
-            }
-        }
-    }
-
 }
