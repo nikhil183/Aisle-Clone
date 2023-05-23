@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.aisleassignment.viewmodel.LoginViewModel" />
@@ -35,20 +36,20 @@
 
             <TextView
                 android:id="@+id/tvCountryCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@{viewModel.countryCode}"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@id/tvEnterPhoneNumber"
-                app:layout_constraintStart_toEndOf="@id/guidelineVertical10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                app:layout_constraintStart_toEndOf="@id/guidelineVertical10" />
 
             <TextView
                 android:id="@+id/etPhoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.phoneNumber}"
                 android:layout_marginStart="5dp"
+                android:text="@{viewModel.phoneNumber}"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@id/tvEnterPhoneNumber"
@@ -62,7 +63,8 @@
                 android:src="@drawable/ic_baseline_edit_24"
                 app:layout_constraintBottom_toBottomOf="@id/etPhoneNumber"
                 app:layout_constraintStart_toEndOf="@id/etPhoneNumber"
-                app:layout_constraintTop_toTopOf="@id/etPhoneNumber" />
+                app:layout_constraintTop_toTopOf="@id/etPhoneNumber"
+                android:contentDescription="@string/edit_phone_number" />
 
             <TextView
                 android:id="@+id/tvEnterPhoneNumber"
@@ -78,17 +80,27 @@
                 android:id="@+id/etOtp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_text_background"
                 android:hint="@string/enter_otp_here"
                 android:inputType="numberPassword"
+                android:padding="10dp"
                 android:textSize="18sp"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@id/guidelineVertical10"
-                app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal30" />
+                app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal30"
+                tools:ignore="Autofill,LabelFor,TextFields" />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/btnContinue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_background"
+                android:paddingHorizontal="25dp"
                 android:text="@string/button_continue"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
                 app:layout_constraintStart_toEndOf="@id/guidelineVertical10"
                 app:layout_constraintTop_toBottomOf="@id/etOtp" />
 

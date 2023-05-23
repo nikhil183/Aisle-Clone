@@ -57,9 +57,9 @@
                 layout="@layout/notes"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintDimensionRatio="1:1"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
+                app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal10"
                 app:profile="@{profile}" />
 
@@ -68,11 +68,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20sp"
+                android:layout_marginTop="15dp"
                 android:text="@string/interested_in_you"
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:layout_marginTop="15dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ilNotes" />
 
@@ -86,11 +86,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvInterested" />
 
-            <Button
+            <android.widget.Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
+                android:background="@drawable/button_background"
+                android:paddingHorizontal="25dp"
                 android:text="@string/upgrade"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@id/tvPremiumDescription"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tvInterested" />
@@ -100,11 +105,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvPremiumDescription"/>
+                app:layout_constraintTop_toBottomOf="@id/tvPremiumDescription" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

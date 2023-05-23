@@ -18,4 +18,5 @@
     <string name="profile">Profile</string>
     <string name="matches">Matches</string>
     <string name="discover">Discover</string>
+    <string name="edit_phone_number">Edit phone number</string>
 </resources>

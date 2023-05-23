@@ -1,5 +1,6 @@
 package com.example.aisleassignment.view.user
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -46,6 +47,7 @@ class NotesFragment : Fragment() {
         likesAdapter = LikesAdapter(requireContext(), likes)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun initObserver() {
         viewModel.notes.observe(viewLifecycleOwner) {
             dataBinding.profile = it.invites?.profiles?.get(0)
