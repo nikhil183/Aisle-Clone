@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.aisleassignment.R
 import com.example.aisleassignment.databinding.ActivityUserBinding
 
@@ -25,5 +26,6 @@ class UserActivity : AppCompatActivity() {
             R.id.fcvNavHost
         ) as NavHostFragment
         navController = navHostFragment.navController
+        dataBinding.bottomNav.setupWithNavController(navController)
     }
 }

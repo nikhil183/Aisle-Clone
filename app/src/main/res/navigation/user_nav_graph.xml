@@ -4,8 +4,23 @@
     android:id="@+id/user_nav_graph"
     app:startDestination="@id/notesFragment">
     <fragment
+        android:id="@+id/discoverFragment"
+        android:name="com.example.aisleassignment.view.user.DiscoverFragment"
+        android:label="NotesFragment" >
+    </fragment>
+    <fragment
         android:id="@+id/notesFragment"
         android:name="com.example.aisleassignment.view.user.NotesFragment"
+        android:label="NotesFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/matchesFragment"
+        android:name="com.example.aisleassignment.view.user.MatchesFragment"
+        android:label="NotesFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.aisleassignment.view.user.ProfileFragment"
         android:label="NotesFragment" >
     </fragment>
 </navigation>

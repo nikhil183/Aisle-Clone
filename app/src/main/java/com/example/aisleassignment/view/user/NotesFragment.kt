@@ -2,7 +2,6 @@ package com.example.aisleassignment.view.user
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +22,13 @@ class NotesFragment : Fragment() {
     private lateinit var likesAdapter: LikesAdapter
     private lateinit var likes: MutableList<Profiles>
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initAdapter()
+        viewModel = ViewModelProvider(requireActivity())[UserDataViewModel::class.java]
+        getNotes()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,11 +36,8 @@ class NotesFragment : Fragment() {
         dataBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_notes, container, false)
 
-        initAdapter()
         initRecyclerView()
-        initViewModel()
-        getNotes()
-
+        initObserver()
         return dataBinding.root
     }
 
@@ -43,13 +46,7 @@ class NotesFragment : Fragment() {
         likesAdapter = LikesAdapter(requireContext(), likes)
     }
 
-    private fun initRecyclerView() {
-        dataBinding.rvLikes.layoutManager = GridLayoutManager(requireContext(), 2)
-        dataBinding.rvLikes.adapter = likesAdapter
-    }
-
-    private fun initViewModel() {
-        viewModel = ViewModelProvider(requireActivity())[UserDataViewModel::class.java]
+    private fun initObserver() {
         viewModel.notes.observe(viewLifecycleOwner) {
             dataBinding.profile = it.invites?.profiles?.get(0)
             likes.addAll(it?.likes?.profiles!!)
@@ -61,5 +58,15 @@ class NotesFragment : Fragment() {
         val sharedPref = requireActivity().getSharedPreferences("shared_preference", Context.MODE_PRIVATE)
         val accessToken = sharedPref.getString("accessToken","")
         viewModel.getNotes(accessToken.toString())
+    }
+
+    private fun initRecyclerView() {
+        dataBinding.rvLikes.layoutManager = GridLayoutManager(requireContext(), 2)
+        dataBinding.rvLikes.adapter = likesAdapter
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        likes.clear()
     }
 }

@@ -25,21 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.12" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineHorizontal60"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.6" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineHorizontal70"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.72" />
+                app:layout_constraintGuide_percent="0.1" />
 
             <TextView
                 android:id="@+id/tvHeaderNotes"
@@ -71,9 +57,9 @@
                 layout="@layout/notes"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:1"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
-                app:layout_constraintBottom_toTopOf="@id/guidelineHorizontal60"
                 app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal10"
                 app:profile="@{profile}" />
 
@@ -86,9 +72,9 @@
                 android:textColor="@color/black"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/tvPremiumDescription"
+                android:layout_marginTop="15dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal60" />
+                app:layout_constraintTop_toBottomOf="@id/ilNotes" />
 
             <TextView
                 android:id="@+id/tvPremiumDescription"
@@ -97,7 +83,6 @@
                 android:layout_marginStart="20sp"
                 android:text="@string/premium_description"
                 android:textSize="15sp"
-                app:layout_constraintBottom_toTopOf="@id/guidelineHorizontal70"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvInterested" />
 
@@ -106,9 +91,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp"
                 android:text="@string/upgrade"
-                app:layout_constraintBottom_toTopOf="@id/guidelineHorizontal70"
+                app:layout_constraintBottom_toBottomOf="@id/tvPremiumDescription"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal60" />
+                app:layout_constraintTop_toTopOf="@id/tvInterested" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvLikes"
@@ -117,8 +102,9 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal70"/>
+                app:layout_constraintTop_toBottomOf="@id/tvPremiumDescription"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </layout>

@@ -15,4 +15,7 @@
     <string name="interested_in_you">Interested In You</string>
     <string name="premium_description">Premium members can \nview all their likes at once</string>
     <string name="upgrade">Upgrade</string>
+    <string name="profile">Profile</string>
+    <string name="matches">Matches</string>
+    <string name="discover">Discover</string>
 </resources>
