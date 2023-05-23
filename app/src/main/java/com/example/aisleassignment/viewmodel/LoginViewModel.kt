@@ -13,28 +13,51 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel : ViewModel() {
 
+    lateinit var phoneNumber: String
+    lateinit var countryCode: String
+    private lateinit var otp: String
+    lateinit var accessToken: String
+
     private val _isNumberRegistered = MutableLiveData<Boolean>()
     val isNumberRegistered: LiveData<Boolean> = _isNumberRegistered
 
-    private val _accessToken = MutableLiveData<String>()
-    val accessToken: LiveData<String> = _accessToken
+    private val _isOtpValid = MutableLiveData<Boolean>()
+    val isOtpValid: LiveData<Boolean> = _isOtpValid
 
-    fun loginWithPhoneNumber(phoneNumber: String) {
+    fun isValidPhoneNumber(countryCode: String, phoneNumber: String): Boolean {
+        if(phoneNumber.length==10) {
+            this.phoneNumber = phoneNumber
+            this.countryCode = countryCode
+            return true
+        }
+        return false
+    }
+
+    fun loginWithPhoneNumber() {
         viewModelScope.launch(Dispatchers.IO) {
             val result =
-                ApiService.retrofitBuilder.isNumberRegistered(PhoneNumberLoginInput(phoneNumber))
+                ApiService.retrofitBuilder.isNumberRegistered(PhoneNumberLoginInput(countryCode+phoneNumber))
             if (result.isSuccessful) {
                 _isNumberRegistered.postValue(result.body()!!.status)
             }
         }
     }
 
-    fun verifyOtp(phoneNumber: String, otp: String) {
+    fun isOtpFormatValid(otp: String): Boolean {
+        if(otp.length==4) {
+            this.otp = otp
+            return true
+        }
+        return false
+    }
+
+    fun verifyOtp() {
         viewModelScope.launch(Dispatchers.IO) {
             val result =
-                ApiService.retrofitBuilder.verifyOtp(OtpVerificationInput(phoneNumber, otp))
+                ApiService.retrofitBuilder.verifyOtp(OtpVerificationInput(countryCode+phoneNumber, otp))
             if (result.isSuccessful) {
-                result.body()?.let { getNotes(it.token) }
+                _isOtpValid.postValue(true)
+                accessToken = result.body()?.token.toString()
             }
         }
     }

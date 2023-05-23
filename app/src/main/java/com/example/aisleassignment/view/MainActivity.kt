@@ -31,15 +31,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setup() {
-        val viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
-        viewModel.loginWithPhoneNumber("+919876543212")
-
-        viewModel.isNumberRegistered.observe(this) {
-            if (it) {
-                viewModel.verifyOtp("+919876543212", "1234")
-            } else {
-                Log.i("answer", "not registered")
-            }
-        }
+//        val viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+//        viewModel.loginWithPhoneNumber("+919876543212")
+//
+//        viewModel.isNumberRegistered.observe(this) {
+//            if (it) {
+//                viewModel.verifyOtp("+919876543212", "1234")
+//            } else {
+//                Log.i("answer", "not registered")
+//            }
+//        }
     }
 }
