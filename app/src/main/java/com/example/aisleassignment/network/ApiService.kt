@@ -8,8 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ApiService {
-
-    lateinit var retrofitBuilder: ApiInterface
+    var retrofitBuilder: ApiInterface
     init {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY

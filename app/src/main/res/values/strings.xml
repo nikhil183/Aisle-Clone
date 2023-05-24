@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">Aisle Assignment</string>
+    <string name="enter_your_phone_number">Enter Your\nPhone Number</string>
+    <string name="get_otp">Get OTP</string>
+    <string name="indian_country_code">+91</string>
+    <string name="hint_enter_phone_number">Enter Phone Number</string>
+    <string name="button_continue">Continue</string>
+    <string name="enter_the_otp">Enter The \nOTP</string>
+    <string name="enter_otp_here">Enter OTP here</string>
+    <string name="demo_timer">00:59</string>
+
+    <!-- UI labels, text fields string -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="notes">Notes</string>
+    <string name="personal_messages_to_you">Personal messages to you</string>
+    <string name="interested_in_you">Interested In You</string>
+    <string name="premium_description">Premium members can \nview all their likes at once</string>
+    <string name="upgrade">Upgrade</string>
+    <string name="profile">Profile</string>
+    <string name="matches">Matches</string>
+    <string name="discover">Discover</string>
+    <string name="edit_phone_number">Edit phone number</string>
+    <string name="resend_otp">Resend Otp</string>
+    <string name="comma">,</string>
+    <string name="view_all_notes">Tap to review 50+ notes</string>
+    <string name="welcome_screen">Welcome Screen</string>
+
+    <!-- Toast messages -->
+    <string name="unregistered_number">This number is not registered</string>
+    <string name="invalid_number">Phone Number should have 10 digits</string>
+    <string name="invalid_otp">Entered OTP is invalid</string>
+    <string name="otp_sent_again">Otp sent again!</string>
+    <string name="timer_format">%02d:%02d</string>
+    <string name="otp_length_error">Otp should have 4 digits</string>
 </resources>

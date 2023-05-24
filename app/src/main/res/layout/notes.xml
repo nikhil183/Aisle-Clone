@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="profile"
+            type="com.example.aisleassignment.model.notes.InvitesProfile" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_background"
+        android:elevation="5dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/sivNotesImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@{profile.photos[0].photo}"
+            app:shapeAppearanceOverlay="@style/roundedCornersImageView" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@{profile.generalInformation.firstName}"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/tvAllNotes"
+            app:layout_constraintStart_toStartOf="@id/sivNotesImage" />
+
+        <TextView
+            android:id="@+id/tvComma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/comma"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/tvName"
+            app:layout_constraintBottom_toBottomOf="@id/tvName"
+            app:layout_constraintTop_toTopOf="@id/tvName" />
+
+        <TextView
+            android:id="@+id/tvAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{profile.generalInformation.age.toString()}"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:layout_marginStart="5dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/tvComma"
+            app:layout_constraintBottom_toBottomOf="@id/tvComma"
+            app:layout_constraintTop_toTopOf="@id/tvComma" />
+
+        <TextView
+            android:id="@+id/tvAllNotes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/view_all_notes"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/sivNotesImage"
+            app:layout_constraintStart_toStartOf="@id/sivNotesImage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

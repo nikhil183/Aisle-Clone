@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.login.LoginFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineVertical10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineHorizontal30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_otp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/tvEnterPhoneNumber"
+            app:layout_constraintStart_toEndOf="@id/guidelineVertical10" />
+
+        <TextView
+            android:id="@+id/tvEnterPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_your_phone_number"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@id/guidelineHorizontal30"
+            app:layout_constraintStart_toEndOf="@id/guidelineVertical10" />
+
+        <EditText
+            android:id="@+id/tvCountryCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text_background"
+            android:padding="10dp"
+            android:text="@string/indian_country_code"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/guidelineVertical10"
+            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal30"
+            tools:ignore="Autofill,LabelFor,TextFields" />
+
+        <EditText
+            android:id="@+id/etPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="@string/hint_enter_phone_number"
+            android:inputType="phone"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/tvCountryCode"
+            app:layout_constraintTop_toBottomOf="@id/guidelineHorizontal30"
+            tools:ignore="Autofill,LabelFor,TextFields" />
+
+        <android.widget.Button
+            android:id="@+id/btnContinue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_background"
+            android:paddingHorizontal="25dp"
+            android:text="@string/button_continue"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/guidelineVertical10"
+            app:layout_constraintTop_toBottomOf="@id/tvCountryCode" />
+
+        <ProgressBar
+            android:id="@+id/pbLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="invisible"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

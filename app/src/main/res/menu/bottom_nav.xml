@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/discoverFragment"
+        android:icon="@drawable/baseline_grid_view_24"
+        android:title="@string/discover" />
+
+    <item
+        android:id="@+id/notesFragment"
+        android:icon="@drawable/ic_baseline_email_24"
+        android:title="@string/notes" />
+
+    <item
+        android:id="@+id/matchesFragment"
+        android:icon="@drawable/ic_baseline_message_24"
+        android:title="@string/matches" />
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_baseline_account_box_24"
+        android:title="@string/profile" />
+
+</menu>
