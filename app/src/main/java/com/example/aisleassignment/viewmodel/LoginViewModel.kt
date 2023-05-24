@@ -11,7 +11,7 @@ import com.example.aisleassignment.network.NetworkResult
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class LoginViewModel : ViewModel() {
+class LoginViewModel: ViewModel() {
 
     lateinit var phoneNumber: String
     lateinit var countryCode: String

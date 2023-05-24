@@ -39,7 +39,7 @@ class LoginFragment : Fragment() {
                     dataBinding.pbLoading.visibility = View.INVISIBLE
                     Toast.makeText(
                         requireContext(),
-                        "This number is not registered",
+                        getString(R.string.unregistered_number),
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -73,7 +73,7 @@ class LoginFragment : Fragment() {
         } else {
             Toast.makeText(
                 requireContext(),
-                "Phone Number should have 10 digits",
+                getString(R.string.invalid_number),
                 Toast.LENGTH_SHORT
             ).show()
         }

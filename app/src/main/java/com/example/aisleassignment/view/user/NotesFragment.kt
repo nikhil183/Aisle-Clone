@@ -13,11 +13,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.aisleassignment.R
 import com.example.aisleassignment.adapter.LikesAdapter
+import com.example.aisleassignment.constant.AppConstants.EMPTY_STRING
+import com.example.aisleassignment.constant.SharedPrefConstant.ACCESS_TOKEN
+import com.example.aisleassignment.constant.SharedPrefConstant.SHARED_PREF_NAME
 import com.example.aisleassignment.databinding.FragmentNotesBinding
 import com.example.aisleassignment.model.notes.Profiles
 import com.example.aisleassignment.network.NetworkResult
 import com.example.aisleassignment.viewmodel.UserDataViewModel
-
 
 class NotesFragment : Fragment() {
 
@@ -77,8 +79,8 @@ class NotesFragment : Fragment() {
     }
 
     private fun getNotes() {
-        val sharedPref = requireActivity().getSharedPreferences("shared_preference", Context.MODE_PRIVATE)
-        val accessToken = sharedPref.getString("accessToken","")
+        val sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
+        val accessToken = sharedPref.getString(ACCESS_TOKEN,EMPTY_STRING)
         viewModel.getNotes(accessToken.toString())
     }
 

@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.aisleassignment.R
+import com.example.aisleassignment.constant.SharedPrefConstant.ACCESS_TOKEN
+import com.example.aisleassignment.constant.SharedPrefConstant.SHARED_PREF_NAME
 import com.example.aisleassignment.databinding.FragmentOtpVerificationBinding
 import com.example.aisleassignment.network.NetworkResult
 import com.example.aisleassignment.view.user.UserActivity
@@ -29,7 +31,6 @@ class OtpVerificationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         dataBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_otp_verification, container, false)
 
@@ -54,7 +55,7 @@ class OtpVerificationFragment : Fragment() {
                 }
                 is NetworkResult.Failure -> {
                     dataBinding.pbLoading.visibility = View.INVISIBLE
-                    Toast.makeText(requireContext(), "Entered OTP is invalid", Toast.LENGTH_SHORT)
+                    Toast.makeText(requireContext(), getString(R.string.invalid_otp), Toast.LENGTH_SHORT)
                         .show()
                 }
             }
@@ -63,9 +64,9 @@ class OtpVerificationFragment : Fragment() {
 
     private fun storeAccessToken(accessToken: String) {
         val sharedPref =
-            requireActivity().getSharedPreferences("shared_preference", Context.MODE_PRIVATE)
+            requireActivity().getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
         sharedPref.edit().run {
-            putString("accessToken", accessToken)
+            putString(ACCESS_TOKEN, accessToken)
             apply()
         }
     }
@@ -89,7 +90,7 @@ class OtpVerificationFragment : Fragment() {
         dataBinding.tvTimer.setOnClickListener {
             Toast.makeText(
                 requireContext(),
-                "Otp sent again!",
+                getString(R.string.otp_sent_again),
                 Toast.LENGTH_SHORT
             ).show()
             countDownTimer.start()
@@ -112,7 +113,7 @@ class OtpVerificationFragment : Fragment() {
     private fun updateCountdownText() {
         val minutes = (timeLeftInMillis / 1000).toInt() / 60
         val seconds = (timeLeftInMillis / 1000).toInt() % 60
-        val timeLeftFormatted = String.format("%02d:%02d", minutes, seconds)
+        val timeLeftFormatted = String.format(getString(R.string.timer_format), minutes, seconds)
         dataBinding.tvTimer.text = timeLeftFormatted
     }
 
@@ -123,7 +124,7 @@ class OtpVerificationFragment : Fragment() {
         } else {
             Toast.makeText(
                 requireContext(),
-                "Otp should have 4 digits",
+                getString(R.string.otp_length_error),
                 Toast.LENGTH_SHORT
             ).show()
         }
